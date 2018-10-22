@@ -1,0 +1,6 @@
+spid_login:
+    path: /spid/login
+    defaults:
+        _controller: Drupal\spid_login\Controller\SpidLoginController::index
+    requirements:
+        _permission: 'access content'

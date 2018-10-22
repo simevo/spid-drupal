@@ -1,0 +1,5 @@
+name: SPID Login
+type: module
+description: Enables Drupal users to login with SPID
+package: Custom
+core: 8.x

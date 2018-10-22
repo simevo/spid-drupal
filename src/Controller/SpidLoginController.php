@@ -4,7 +4,7 @@ class SpidLoginController {
     public function index() {
         return array(
                 '#title' => 'SPID Login',
-                '#markup' => '<h2>Login Initial Route--</h2>',
+                '#markup' => '<h2>Login Initial Route</h2>',
             );
     }
 }

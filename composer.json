@@ -1,0 +1,16 @@
+{
+    "name": "italia/spid-drupal",
+    "description": "SPID (Sistema Pubblico di Identità Digitale) Drupal plugin",
+    "type": "library",
+    "license": "AGPL-3.0",
+    "authors": [{
+        "name": "Giulio Gatto",
+        "email": "giuliogatto@gmail.com"
+    }],
+    "require": {
+        "italia/spid-php-lib": "^0.20.0"
+    },
+    "require-dev": {
+        
+    }
+}

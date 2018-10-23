@@ -4,3 +4,12 @@ spid_login:
         _controller: Drupal\spid_login\Controller\SpidLoginController::index
     requirements:
         _permission: 'access content'
+spid_login.admin_settings_form:  
+    path: /admin/config/spid_login/options 
+    defaults:  
+        _form: Drupal\spid_login\Form\SpidOptionsForm 
+        _title: 'SPID options'  
+    requirements:  
+        _permission: 'access administration pages'  
+    options:  
+        _admin_route: TRUE  

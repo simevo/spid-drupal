@@ -33,6 +33,20 @@ class SpidOptionsForm extends ConfigFormBase {
       '#default_value' => $config->get('provincia'),  
     ];  
 
+    $form['citta'] = [  
+      '#type' => 'textfield',  
+      '#title' => $this->t('Citt&aacute;'),  
+      '#description' => $this->t('Citt&aacute;'),  
+      '#default_value' => $config->get('citta'),  
+    ];  
+
+    $form['email_referente'] = [  
+      '#type' => 'textfield',  
+      '#title' => $this->t('Citt&aacute;'),  
+      '#description' => $this->t("Indirizzo email dell'ente o del referente tecnico"),  
+      '#default_value' => $config->get('email_referente'),  
+    ];  
+
     return parent::buildForm($form, $form_state);  
   }  
 
@@ -41,6 +55,8 @@ class SpidOptionsForm extends ConfigFormBase {
 
     $this->config('spid_login.adminsettings')  
       ->set('provincia', $form_state->getValue('provincia'))  
+      ->set('citta', $form_state->getValue('citta'))  
+      ->set('email_referente', $form_state->getValue('email_referente'))  
       ->save();  
   }  
 

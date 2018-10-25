@@ -23,7 +23,7 @@ require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Sp.php';
 
 class SpidLoginController {
     public function index() {
-    	$base = SPID_DRUPAL_PATH;
+    	$base =  (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
     	$home = SPID_DRUPAL_PATH;
     	$sp_attributeconsumingservice = [];
     	$settings = [
@@ -40,6 +40,7 @@ class SpidLoginController {
             'sp_attributeconsumingservice' => [$sp_attributeconsumingservice],
             ];
         $this->auth = new \Italia\Spid\Sp($settings);
+        
         return array(
                 '#title' => 'SPID Login',
                 '#markup' => '<h2>Login Initial Route</h2>',

@@ -23,24 +23,28 @@ require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Sp.php';
 
 class SpidLoginController {
     public function index() {
+
     	$base =  (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+    	// up a level
+    	$base = substr($base, 0, -6);
+
     	$home = SPID_DRUPAL_PATH;
     	$sp_attributeconsumingservice = [];
     	$settings = [
             'sp_entityid' => $base,
-            'sp_key_file' => "$home/wp.key",
-            'sp_cert_file' => "$home/wp.crt",
+            'sp_key_file' => $home."sp.key",
+            'sp_cert_file' => $home."sp.crt",
             'sp_assertionconsumerservice' => [
-                $base . '/wp-login.php?sso=spid'
+                $base . 'login'
             ],
-            'sp_singlelogoutservice' => [[$base . '/wp-login.php?sso=spid&amp;slo', '']],
+            'sp_singlelogoutservice' => [[$base . 'logout', '']],
             'sp_org_name' => 'test',
             'sp_org_display_name' => 'Test',
-            'idp_metadata_folder' => "$home/idp_metadata/",
+            'idp_metadata_folder' => $home."idp_metadata/",
             'sp_attributeconsumingservice' => [$sp_attributeconsumingservice],
             ];
         $this->auth = new \Italia\Spid\Sp($settings);
-        
+        var_dump($this->auth);die();
         return array(
                 '#title' => 'SPID Login',
                 '#markup' => '<h2>Login Initial Route</h2>',

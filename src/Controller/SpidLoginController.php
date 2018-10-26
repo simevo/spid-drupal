@@ -24,6 +24,7 @@ require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Sp.php';
 require_once SPID_DRUPAL_PATH . 'vendor/autoload.php';
 
 class SpidLoginController {
+    
     public function index() {
 
     	$base =  (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
@@ -37,9 +38,9 @@ class SpidLoginController {
             'sp_key_file' => $home."sp.key",
             'sp_cert_file' => $home."sp.crt",
             'sp_assertionconsumerservice' => [
-                $base . 'login'
+                 'http://localhost:8080/spid/login/1'
             ],
-            'sp_singlelogoutservice' => [[$base . 'logout', '']],
+            'sp_singlelogoutservice' => [['http://localhost:8080/spid/logout', '']],
             'sp_org_name' => 'test',
             'sp_org_display_name' => 'Test',
             'idp_metadata_folder' => $home."idp_metadata/",
@@ -47,17 +48,20 @@ class SpidLoginController {
             ];
         $this->auth = new \Italia\Spid\Sp($settings);
         
-        // name of the xml file inside idp_metadata_folder (without .xml extension)
-        $idpName = 'teamdigitale4.simevo.com';
-        // index of assertion consumer service as per the SP metadata
-        $assertId = 0;
-        // index of attribute consuming service as per the SP metadata
-        $attrId = 0;
-        // SPID level (1, 2 or 3)
-        $spidLevel = 1;
-        // return url, optional
-        $returnTo = null;
-        $this->auth->login($idpName, $assertId, $attrId, $spidLevel, $returnTo);
+        if(!$logged_in){
+            // name of the xml file inside idp_metadata_folder (without .xml extension)
+            $idpName = 'teamdigitale4.simevo.com';
+            // index of assertion consumer service as per the SP metadata
+            $assertId = 0;
+            // index of attribute consuming service as per the SP metadata
+            $attrId = 0;
+            // SPID level (1, 2 or 3)
+            $spidLevel = 1;
+            // return url, optional
+            $returnTo = null;
+            $this->auth->login($idpName, $assertId, $attrId, $spidLevel, $returnTo);
+        }
+            
 
         return array(
                 '#title' => 'SPID Login',

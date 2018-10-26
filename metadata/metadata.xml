@@ -12,7 +12,7 @@
         </md:KeyDescriptor>
         <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="Array"/>
         <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</md:NameIDFormat>
-        <md:AssertionConsumerService index="0" isDefault="true" Location="http://localhost:8099/wp-login.php?sso=spid" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
+        <md:AssertionConsumerService index="0" isDefault="true" Location="http://localhost:8099/spid/login/1" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
         <md:AttributeConsumingService index="0">
             <md:ServiceName xml:lang="it">Set 0</md:ServiceName>       
             <md:RequestedAttribute Name="spidCode"/>

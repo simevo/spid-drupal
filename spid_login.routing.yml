@@ -1,7 +1,8 @@
 spid_login:
-    path: /spid/login
+    path: /spid/login/{logged_in}
     defaults:
         _controller: Drupal\spid_login\Controller\SpidLoginController::index
+        logged_in: 0
     requirements:
         _permission: 'access content'
 spid_login.admin_settings_form:  

@@ -29,6 +29,10 @@ composer install
 Con l'immagine Docker in esecuzione cercare SPID Login ed installare il modulo da [estendi](http://localhost:8080/admin/modules).
 A quel punto la path [/spid/login](http://localhost:8080/spid/login) permette l'autenticazione SSO sul server IDP di test [teamdigitale4.simevo.com](https://teamdigitale4.simevo.com)
 
+## Opzioni
+
+Le opzioni del modulo sono disponibili cliccando su Configurazione -> SPID opzioni 
+
 
 ## Contributing
 

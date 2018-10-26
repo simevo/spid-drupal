@@ -2,5 +2,5 @@ spid_login.admin:
     title: 'SPID opzioni'
     description: 'Managing delle opzioni SPID'
     parent: system.admin_config_development
-    route_name: spid_login
+    route_name: spid_login.admin_settings_form
     weight: 100

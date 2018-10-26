@@ -21,6 +21,8 @@ require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Spid/Saml.php';
 require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Spid/Session.php';
 require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Sp.php';
 
+require_once SPID_DRUPAL_PATH . 'vendor/autoload.php';
+
 class SpidLoginController {
     public function index() {
 
@@ -44,6 +46,7 @@ class SpidLoginController {
             'sp_attributeconsumingservice' => [$sp_attributeconsumingservice],
             ];
         $this->auth = new \Italia\Spid\Sp($settings);
+        
         // name of the xml file inside idp_metadata_folder (without .xml extension)
         $idpName = 'teamdigitale4.simevo.com';
         // index of assertion consumer service as per the SP metadata

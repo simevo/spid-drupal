@@ -31,7 +31,7 @@ class SpidLoginController {
     	$home = SPID_DRUPAL_PATH;
     	$sp_attributeconsumingservice = [];
     	$settings = [
-            'sp_entityid' => $base,
+            'sp_entityid' => 'http://localhost:8080',
             'sp_key_file' => $home."sp.key",
             'sp_cert_file' => $home."sp.crt",
             'sp_assertionconsumerservice' => [
@@ -44,7 +44,18 @@ class SpidLoginController {
             'sp_attributeconsumingservice' => [$sp_attributeconsumingservice],
             ];
         $this->auth = new \Italia\Spid\Sp($settings);
-        var_dump($this->auth);die();
+        // name of the xml file inside idp_metadata_folder (without .xml extension)
+        $idpName = 'teamdigitale4.simevo.com';
+        // index of assertion consumer service as per the SP metadata
+        $assertId = 0;
+        // index of attribute consuming service as per the SP metadata
+        $attrId = 0;
+        // SPID level (1, 2 or 3)
+        $spidLevel = 1;
+        // return url, optional
+        $returnTo = null;
+        $this->auth->login($idpName, $assertId, $attrId, $spidLevel, $returnTo);
+
         return array(
                 '#title' => 'SPID Login',
                 '#markup' => '<h2>Login Initial Route</h2>',

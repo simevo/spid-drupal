@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" entityID="http://localhost:8080" ID="http___localhost_8080"><ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" entityID="http://localhost:8099" ID="http___localhost_8099"><ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
   <ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
     <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
-  <ds:Reference URI="#http___localhost_8080"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>PK0FVkSjX3CLMrlO6HHqc324e967KjtR8nRYqdYvLvY=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>DWwtmNS7VNDzrrLnCA03m1D/cp+AigHl4CAm37PQ4w8Og3NPiF56tSWTnDRREnGLzibr6lnIq2lkYuYHQkM96zD5Dde2qN6mPVwKmlZ3DmGMMR8kLm8QriKB39Vn2xx33P7+Fb0zRQedaMsO7T9GKm7h/pCIdbR1WOQav8wUOStIZ5ai6pdbNAKsP72SxOrkJ2v6AsEnDY28VZTc97njH04KECjZWDcdTtSdWtolkMzwqKatZQi3ut65YNti7Zanyzi59d1MB2K7nwVlBDO7IjmgERGFRL5U68//v4nALPKDTJfpcmjOO6fafHITYakF3S/3YvLX8fIcEu8HwLNwZA==</ds:SignatureValue>
+  <ds:Reference URI="#http___localhost_8099"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>PK0FVkSjX3CLMrlO6HHqc324e967KjtR8nRYqdYvLvY=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>DWwtmNS7VNDzrrLnCA03m1D/cp+AigHl4CAm37PQ4w8Og3NPiF56tSWTnDRREnGLzibr6lnIq2lkYuYHQkM96zD5Dde2qN6mPVwKmlZ3DmGMMR8kLm8QriKB39Vn2xx33P7+Fb0zRQedaMsO7T9GKm7h/pCIdbR1WOQav8wUOStIZ5ai6pdbNAKsP72SxOrkJ2v6AsEnDY28VZTc97njH04KECjZWDcdTtSdWtolkMzwqKatZQi3ut65YNti7Zanyzi59d1MB2K7nwVlBDO7IjmgERGFRL5U68//v4nALPKDTJfpcmjOO6fafHITYakF3S/3YvLX8fIcEu8HwLNwZA==</ds:SignatureValue>
 <ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIDezCCAmOgAwIBAgIJAPAGoXZxKhk+MA0GCSqGSIb3DQEBCwUAMFQxCzAJBgNVBAYTAklUMQ4wDAYDVQQIDAVJdGFseTENMAsGA1UEBwwEUm9tZTESMBAGA1UECgwJbXlzZXJ2aWNlMRIwEAYDVQQDDAlsb2NhbGhvc3QwHhcNMTgxMDE0MTE0NTMxWhcNMTkxMDE0MTE0NTMxWjBUMQswCQYDVQQGEwJJVDEOMAwGA1UECAwFSXRhbHkxDTALBgNVBAcMBFJvbWUxEjAQBgNVBAoMCW15c2VydmljZTESMBAGA1UEAwwJbG9jYWxob3N0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArWfQYdj1N/x4OFY0fgW65PnMud4qjD9jhM39Jy/1hu4QYpDRyiORfBRfAC6gEX4gpP6qZ82iTeBTpHtPdJRfH/d7hLNADx241KO59xiwdC0UpNxSwFkVG9Esatyd22Mpu9eWPWz0CfZItjnC99TIKQq2UnH64zL3LzsHqq2c4WWHrUUJaCASvKyazkEs/3ViOF1QPK1+5hUwsh+YFn00uwAolT9DwzhWRRvV/nImZ07vxZ4vq8vWOIdHShIcfNonAbBGSqj91PkEw4+vWBKhEvMhIsfKCkrZzmbf1FZBMHa4DvV+Yk9o4IbBbzfzuOfnlZHl5E2frPcTaviyeZRo5wIDAQABo1AwTjAdBgNVHQ4EFgQU9rMNeqvANTG4qJcjs1RQa828Z5MwHwYDVR0jBBgwFoAU9rMNeqvANTG4qJcjs1RQa828Z5MwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAnILe24L5sKYJ3I2NXERkAynkI8IU+3i33jickFVOtU/qvB5w2i1EQEok89F4dHOi+xdzdnEzNoqQxKIB3XOKDhvPNL3HFSY9f+CDK62jcSr4OA/7c+XhCWO6l/sPaZhoo52rh+Vtr6bUUCAWcspBJFN4jRK/gkeuI/RLjOmhcnBQLZiJu5n2R35jDsRrRWW6VdSwcbd9/wHW65PU8YK7PG7VhCaN2DAi2GX5JY/0V20HoMcLbZwCb2WjHthLpT2OIdyIy3eEs9AbI2I0ZHoBAYb/7JbZOw+IlhCB9XulH7bDonDCfjd3H5R/340OI7jZDt76UgJ2drwpzkbZ8DszIg==</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature>
     <md:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol" AuthnRequestsSigned="true" WantAssertionsSigned="true">
         <md:KeyDescriptor use="signing">
@@ -12,7 +12,7 @@
         </md:KeyDescriptor>
         <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="Array"/>
         <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</md:NameIDFormat>
-        <md:AssertionConsumerService index="0" isDefault="true" Location="http://localhost:8080/wp-login.php?sso=spid" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
+        <md:AssertionConsumerService index="0" isDefault="true" Location="http://localhost:8099/wp-login.php?sso=spid" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"/>
         <md:AttributeConsumingService index="0">
             <md:ServiceName xml:lang="it">Set 0</md:ServiceName>       
             <md:RequestedAttribute Name="spidCode"/>
@@ -22,5 +22,5 @@
             <md:RequestedAttribute Name="digitalAddress"/></md:AttributeConsumingService></md:SPSSODescriptor><md:Organization>
     <md:OrganizationName xml:lang="it">test</md:OrganizationName>
     <md:OrganizationDisplayName xml:lang="it">Test</md:OrganizationDisplayName>
-    <md:OrganizationURL xml:lang="it">http://localhost:8080</md:OrganizationURL>
+    <md:OrganizationURL xml:lang="it">http://localhost:8099</md:OrganizationURL>
 </md:Organization></md:EntityDescriptor>

@@ -1,6 +1,7 @@
 <?php
 
 namespace Italia\Spid;
+use Italia\Spid\Spid\Session;
 
 class Sp
 {

@@ -24,7 +24,7 @@ require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Sp.php';
 require_once SPID_DRUPAL_PATH . 'vendor/autoload.php';
 
 class SpidLoginController {
-    
+
     public function index() {
 
     	$base =  (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
@@ -32,7 +32,7 @@ class SpidLoginController {
     	$base = substr($base, 0, -6);
 
     	$home = SPID_DRUPAL_PATH;
-    	$sp_attributeconsumingservice = [];
+    	$sp_attributeconsumingservice = ["name", "familyName", "fiscalNumber", "email"];
     	$settings = [
             'sp_entityid' => 'http://localhost:8080',
             'sp_key_file' => $home."sp.key",
@@ -48,7 +48,7 @@ class SpidLoginController {
             ];
         $this->auth = new \Italia\Spid\Sp($settings);
         
-        if(!$logged_in){
+        if(!$this->auth->isAuthenticated()){
             // name of the xml file inside idp_metadata_folder (without .xml extension)
             $idpName = 'teamdigitale4.simevo.com';
             // index of assertion consumer service as per the SP metadata
@@ -61,11 +61,19 @@ class SpidLoginController {
             $returnTo = null;
             $this->auth->login($idpName, $assertId, $attrId, $spidLevel, $returnTo);
         }
-            
-
+        
+        if($this->auth->isAuthenticated()){
+            $attributes  = $this->auth->getAttributes();
+            $flattened_attributes = implode("<br>",$attributes);
+        } else {
+            echo 'Utente non loggato';
+            $flattened_attributes = '';
+        }
+        
+        
         return array(
                 '#title' => 'SPID Login',
-                '#markup' => '<h2>Login Initial Route</h2>',
+                '#markup' => $flattened_attributes,
             );
     }
 }

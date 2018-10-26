@@ -7,6 +7,7 @@ use Italia\Spid\Spid\Saml\In\BaseResponse;
 use Italia\Spid\Spid\Saml\Settings;
 use Italia\Spid\Spid\Saml\SignatureUtils;
 use Italia\Spid\Spid\Interfaces\SAMLInterface;
+use Italia\Spid\Spid\Session;
 
 class Saml implements SAMLInterface
 {
@@ -173,7 +174,15 @@ XML;
             return false;
         }
         if (isset($_SESSION) && isset($_SESSION['spidSession'])) {
-            $this->session = $_SESSION['spidSession'];
+            $session_array = (array) $_SESSION['spidSession'];
+            $session = new Session(); // aggiungere use ..\Session
+            $session->sessionID = $session_array['sessionID'];
+            $session->idp = $session_array['idp'];
+            $session->idpEntityID = $session_array['idpEntityID'];
+            $session->level = $session_array['level'];
+            $session->attributes = $session_array['attributes'];
+
+            $this->session = $session;
             return true;
         }
         return false;

@@ -2,6 +2,7 @@
 namespace Drupal\spid_login\Controller;
 define( 'SPID_DRUPAL_PATH', dirname(__FILE__, 3) . '/' );
 
+// NOTE: using hardcoded class from italia/spid-php-lib because of hotfix
 require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Spid/Interfaces/IdpInterface.php';
 require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Spid/Interfaces/RequestInterface.php';
 require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Spid/Interfaces/ResponseInterface.php';
@@ -20,6 +21,7 @@ require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Spid/Saml/Out/LogoutResponse.p
 require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Spid/Saml.php';
 require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Spid/Session.php';
 require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Sp.php';
+// remove previous require_once when class spid-php-lib is fixed 
 
 require_once SPID_DRUPAL_PATH . 'vendor/autoload.php';
 

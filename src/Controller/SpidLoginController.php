@@ -27,7 +27,7 @@ require_once SPID_DRUPAL_PATH . 'vendor/autoload.php';
 
 class SpidLoginController {
 
-    public function index() {
+    public function login() {
 
     	$base =  (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
     	// up a level
@@ -77,5 +77,14 @@ class SpidLoginController {
                 '#title' => 'SPID Login',
                 '#markup' => $flattened_attributes,
             );
+    }
+
+    public function logout() {
+
+        return array(
+                '#title' => 'SPID Login',
+                '#markup' => 'Goodbye SPID',
+            );
+
     }
 }

@@ -2,6 +2,10 @@
 namespace Drupal\spid_login\Controller;
 define( 'SPID_DRUPAL_PATH', dirname(__FILE__, 3) . '/' );
 
+use Drupal\Core\Controller\ControllerBase;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\spid_login\Services\SpidService;
+
 // NOTE: using hardcoded class from italia/spid-php-lib because of hotfix
 require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Spid/Interfaces/IdpInterface.php';
 require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Spid/Interfaces/RequestInterface.php';
@@ -25,7 +29,21 @@ require_once SPID_DRUPAL_PATH . 'spid-php-lib/src/Sp.php';
 
 require_once SPID_DRUPAL_PATH . 'vendor/autoload.php';
 
-class SpidLoginController {
+class SpidLoginController extends ControllerBase{
+
+    protected $spid_auth;
+
+    public function __construct(SpidService $spid_service) {
+
+      $this->spid_auth = $spid_service;
+    }
+
+    public static function create(ContainerInterface $container) {
+
+      return new static(
+        $container->get('spid_login.spid')
+      );  
+    }
 
     public function login() {
 

@@ -1,0 +1,3 @@
+services:
+    spid_login.spid:
+        class: Drupal\spid_login\Services\SpidService

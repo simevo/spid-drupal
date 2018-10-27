@@ -1,6 +1,6 @@
 <?php
 namespace Drupal\spid_login\Controller;
-define( 'SPID_DRUPAL_PATH', dirname(__FILE__, 3) . '/' );
+define( 'SPID_DRUPAL_PATH', dirname(__FILE__, 3) . '/' ); // REMOVE THIS CONSTANT!!!
 
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -31,11 +31,12 @@ require_once SPID_DRUPAL_PATH . 'vendor/autoload.php';
 
 class SpidLoginController extends ControllerBase{
 
-    protected $spid_auth;
+    protected $spid_service;
 
     public function __construct(SpidService $spid_service) {
 
-      $this->spid_auth = $spid_service;
+      $this->spid_service = $spid_service;
+    
     }
 
     public static function create(ContainerInterface $container) {
@@ -46,29 +47,8 @@ class SpidLoginController extends ControllerBase{
     }
 
     public function login() {
-
-    	$base =  (!empty($_SERVER['HTTPS'])) ? "https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'] : "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-    	// up a level
-    	$base = substr($base, 0, -6);
-
-    	$home = SPID_DRUPAL_PATH;
-    	$sp_attributeconsumingservice = ["name", "familyName", "fiscalNumber", "email"];
-    	$settings = [
-            'sp_entityid' => 'http://localhost:8080',
-            'sp_key_file' => $home."sp.key",
-            'sp_cert_file' => $home."sp.crt",
-            'sp_assertionconsumerservice' => [
-                 'http://localhost:8080/spid/login/1'
-            ],
-            'sp_singlelogoutservice' => [['http://localhost:8080/spid/logout', '']],
-            'sp_org_name' => 'test',
-            'sp_org_display_name' => 'Test',
-            'idp_metadata_folder' => $home."idp_metadata/",
-            'sp_attributeconsumingservice' => [$sp_attributeconsumingservice],
-            ];
-        $this->auth = new \Italia\Spid\Sp($settings);
         
-        if(!$this->auth->isAuthenticated()){
+        if(!$this->spid_service->auth->isAuthenticated()){
             // name of the xml file inside idp_metadata_folder (without .xml extension)
             $idpName = 'teamdigitale4.simevo.com';
             // index of assertion consumer service as per the SP metadata
@@ -79,11 +59,11 @@ class SpidLoginController extends ControllerBase{
             $spidLevel = 1;
             // return url, optional
             $returnTo = null;
-            $this->auth->login($idpName, $assertId, $attrId, $spidLevel, $returnTo);
+            $this->spid_service->auth->login($idpName, $assertId, $attrId, $spidLevel, $returnTo);
         }
         
-        if($this->auth->isAuthenticated()){
-            $attributes  = $this->auth->getAttributes();
+        if($this->spid_service->auth->isAuthenticated()){
+            $attributes  = $this->spid_service->auth->getAttributes();
             $flattened_attributes = implode("<br>",$attributes);
         } else {
             echo 'Utente non loggato';

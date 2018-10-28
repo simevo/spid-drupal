@@ -55,10 +55,10 @@ class SpidLoginController extends ControllerBase{
 
     public function logout() {
 
-        $this->spid_service->auth->logout(0); // investigate what is the required $slo parameter to pass to logout()
+        $this->spid_service->auth->logout(0); //index of single logout service as per the SP metadata (sp_singlelogoutservice in settings array) -> in metadata.xml -> <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://localhost:8080/spid/logout"/>
 
         return array(
-                '#title' => 'SPID Login',
+                '#title' => 'SPID Logout',
                 '#markup' => 'Goodbye SPID',
             );
 

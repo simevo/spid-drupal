@@ -1,0 +1,9 @@
+spid-smart-button:
+  remote: https://github.com/italia/spid-smart-button
+  version: 1.0.0
+  license:
+    name: BSD 3-Clause License
+    url: https://github.com/italia/spid-smart-button/blob/master/LICENSE.md
+    gpl-compatible: true
+  js:
+    https://italia.github.io/spid-smart-button/spid-button.min.js: { type: external, minified: true }

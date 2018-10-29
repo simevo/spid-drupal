@@ -27,10 +27,19 @@ class SpidOptionsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {  
     $config = $this->config('spid_login.adminsettings'); 
 
+    $metadata_link_options = [
+      'attributes' => [
+        'target' => '_blank'
+      ]
+    ];
+    $metadata_link = \Drupal\Core\Link::createFromRoute($this->t('Service Provider Metadata'), 'spid_metadata')->toRenderable();
+
     $form['service_provider'] = [
       '#type' => 'fieldset',
-      '#title' => $this->t('Service Provider configuration'),
+      '#title' => $this->t('Service Provider Options'),
     ]; 
+
+    $form['service_provider']['#markup'] = render($metadata_link);
 
     $form['service_provider']['spid_entity_id'] = [  
       '#type' => 'textfield',  

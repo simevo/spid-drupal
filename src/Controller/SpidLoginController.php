@@ -3,6 +3,7 @@ namespace Drupal\spid_login\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Drupal\spid_login\Services\SpidService;
 
 class SpidLoginController extends ControllerBase{
@@ -61,6 +62,14 @@ class SpidLoginController extends ControllerBase{
                 '#title' => 'SPID Logout',
                 '#markup' => 'Goodbye SPID',
             );
+
+    }
+
+    public function metadata() {
+
+        $response = new Response($this->spid_service->auth->getSPMetadata(), 200);
+        $response->headers->set('Content-Type', 'text/xml');
+        return $response;
 
     }
 }

@@ -24,23 +24,35 @@ class SpidOptionsForm extends ConfigFormBase {
   }  
 
   public function buildForm(array $form, FormStateInterface $form_state) {  
-    $config = $this->config('spid_login.adminsettings');  
+    $config = $this->config('spid_login.adminsettings'); 
 
-    $form['spid_provincia'] = [  
+    $form['service_provider'] = [
+      '#type' => 'fieldset',
+      '#title' => $this->t('Service Provider configuration'),
+    ]; 
+
+    $form['service_provider']['spid_entity_id'] = [  
+      '#type' => 'textfield',  
+      '#title' => $this->t('Nome del Service Provider'),  
+      '#description' => $this->t('Nome del Service Provider'),  
+      '#default_value' => $config->get('spid_entity_id'),  
+    ];  
+
+    $form['service_provider']['spid_provincia'] = [  
       '#type' => 'textfield',  
       '#title' => $this->t('Provincia (nome per esteso)'),  
       '#description' => $this->t('Provincia del Service Provider'),  
       '#default_value' => $config->get('spid_provincia'),  
     ];  
 
-    $form['spid_citta'] = [  
+    $form['service_provider']['spid_citta'] = [  
       '#type' => 'textfield',  
       '#title' => $this->t('Citt&aacute;'),  
       '#description' => $this->t('Citt&aacute;'),  
       '#default_value' => $config->get('spid_citta'),  
     ];  
 
-    $form['spid_email_referente'] = [  
+    $form['service_provider']['spid_email_referente'] = [  
       '#type' => 'textfield',  
       '#title' => $this->t('Email referente'),  
       '#description' => $this->t("Indirizzo email dell'ente o del referente tecnico"),  
@@ -54,6 +66,7 @@ class SpidOptionsForm extends ConfigFormBase {
     parent::submitForm($form, $form_state);  
 
     $this->config('spid_login.adminsettings')  
+      ->set('spid_entity_id', $form_state->getValue('spid_entity_id'))  
       ->set('spid_provincia', $form_state->getValue('spid_provincia'))  
       ->set('spid_citta', $form_state->getValue('spid_citta'))  
       ->set('spid_email_referente', $form_state->getValue('spid_email_referente'))  

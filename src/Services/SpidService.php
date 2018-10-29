@@ -47,5 +47,9 @@ class SpidService {
         $this->auth = new \Italia\Spid\Sp($settings);
 
 	 }
+
+     public function getAllAttributes() {
+        return ['spid_Code','spid_name','spid_familyName','spid_placeOfBirth','spid_countyOfBirth','spid_dateOfBirth','spid_gender','spid_companyName','spid_registeredOffice','spid_fiscalNumber','spid_ivaCode','spid_idCard','spid_mobilePhone','spid_email','spid_address','spid_expirationDate','spid_digitalAddress'];
+     }
 	
 }

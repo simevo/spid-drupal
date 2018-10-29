@@ -6,6 +6,7 @@
 namespace Drupal\spid_login\Form;  
 use Drupal\Core\Form\ConfigFormBase;  
 use Drupal\Core\Form\FormStateInterface; 
+use Drupal\spid_login\Services\SpidService;
 
 
 class SpidOptionsForm extends ConfigFormBase {
@@ -59,17 +60,28 @@ class SpidOptionsForm extends ConfigFormBase {
       '#default_value' => $config->get('spid_email_referente'),  
     ];  
 
+    $form['service_provider']['spid_metadata_attributes'] = [
+      '#type' => 'checkboxes',
+      '#title' => $this->t('Attributi'),
+      '#description' => $this->t('Attributi richiesti IDP.'),
+      '#default_value' => $config->get('spid_metadata_attributes'),
+      '#options' => SpidService::getAllAttributes(),
+    ];
+
     return parent::buildForm($form, $form_state);  
   }  
 
   public function submitForm(array &$form, FormStateInterface $form_state) {  
     parent::submitForm($form, $form_state);  
 
+    $metadataAttributes = $form_state->getValue('spid_metadata_attributes');
+
     $this->config('spid_login.adminsettings')  
       ->set('spid_entity_id', $form_state->getValue('spid_entity_id'))  
       ->set('spid_provincia', $form_state->getValue('spid_provincia'))  
       ->set('spid_citta', $form_state->getValue('spid_citta'))  
       ->set('spid_email_referente', $form_state->getValue('spid_email_referente'))  
+      ->set('spid_metadata_attributes', $metadataAttributes)
       ->save();  
   }  
 
